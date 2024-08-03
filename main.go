@@ -9,16 +9,14 @@ import (
 )
 
 func main() {
-	mux := http.NewServeMux()
-
 	logger.Register()
-	route.Register(mux)
+	route.Register()
 
 	// Created file server for css file, which used in html templates
 	fileServer := http.FileServer(http.Dir("static"))
-	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
+	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 
-	if err := http.ListenAndServe("0.0.0.0:8080", mux); err != nil {
+	if err := http.ListenAndServe("0.0.0.0:8080", nil); err != nil {
 		log.Fatalln(err)
 	}
 }
