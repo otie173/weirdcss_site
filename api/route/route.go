@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func Register() {
-	http.HandleFunc("GET /", handler.HomepageHandler)
+func Register(mux *http.ServeMux) {
+	mux.HandleFunc("GET /", handler.HomepageHandler)
 }
