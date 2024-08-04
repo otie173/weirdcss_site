@@ -1,223 +1,308 @@
 :root {
-    --bg-color: #1a1a1a;
-    --card-color: #1e1e1e;
-    --text-color: #e0e0e0;
-    --accent-color: #38bdf8;
-    --secondary-color: #4ade80;
-  }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-  }
-  
+  --bg-color: #1a1a1a;
+  --card-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --accent-color: #38bdf8;
+  --secondary-color: #4ade80;
+  --link-color: #a0a0a0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: visible;
+  text-align: center;
+  width: 100%;
+  transform-origin: center;
+  transform: scale(var(--scale, 1));
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+.card, .main-header {
+  background-color: var(--card-color);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  height: 60px;
+  padding: 0 2rem;
+}
+
+h2 {
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+p {
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.8;
+}
+
+p + p {
+  margin-top: 1.5rem;
+}
+
+.card p:first-of-type {
+  margin-top: 0;
+}
+
+.card p:last-of-type {
+  margin-bottom: 0;
+}
+
+.card p a {
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.card p a:hover {
+  color: var(--text-color);
+}
+
+.tag {
+  display: inline-block;
+  background-color: #2a2a2a;
+  color: var(--text-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+nav ul li {
+  margin-left: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Media queries for adaptivity */
+@media (max-width: 768px) {
   .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
   }
-  
-  .page-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    margin-top: 5rem;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-    font-weight: 700;
-  }
-  
-  .gradient-text {
-    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  
-  .subtitle {
-    font-size: 1.2rem;
-    color: #a0a0a0;
-    font-weight: 400;
-  }
-  
-  .card, .main-header {
-    background-color: var(--card-color);
-    border-radius: 8px;
-    padding: 1rem 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
   .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0 1.5rem;
+    height: 50px;
   }
-  
+  .card {
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .logo {
+    font-size: 18px;
+  }
+  nav ul li {
+    margin-left: 12px;
+  }
+  nav ul li a {
+    font-size: 12px;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
   h2 {
-    color: #ffffff;
-    margin-top: 0;
-    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  p + p {
+    margin-top: 1.2rem;
+  }
+  .tag {
+    font-size: 0.8rem;
+  }
+  .page-header {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0.5rem;
+  }
+  .main-header {
+    padding: 0 1rem;
+    height: 40px;
+  }
+  .card {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .logo {
+    font-size: 14px;
+  }
+  nav ul li {
+    margin-left: 8px;
+  }
+  nav ul li a {
+    font-size: 10px;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  p + p {
+    margin-top: 1rem;
+  }
+  .tag {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.3rem;
+  }
+  .page-header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  h1 {
     font-size: 1.5rem;
   }
-  
-  p {
-    color: var(--text-color);
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0.5rem 0;
+}
+
+@media (max-width: 400px) {
+  .main-header {
+    padding: 0 0.8rem;
+    height: 36px;
   }
-  
-  .tag {
-    display: inline-block;
-    background-color: #2a2a2a;
-    color: var(--text-color);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+  .card {
+    padding: 0.5rem 0.8rem;
+    margin-bottom: 1rem;
   }
-  
   .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #ffffff;
-    white-space: nowrap;
+    font-size: 12px;
   }
-  
-  nav ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-  }
-  
   nav ul li {
-    margin-left: 20px;
+    margin-left: 6px;
   }
-  
   nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 16px;
-    font-weight: 400;
-    white-space: nowrap;
+    font-size: 8px;
   }
-  
-  /* Media queries for adaptivity */
-  @media (max-width: 768px) {
-    .container {
-      padding: 1rem;
-    }
-    .main-header, .card {
-      padding: 0.75rem 1.5rem;
-    }
-    .logo {
-      font-size: 18px;
-    }
-    nav ul li {
-      margin-left: 12px;
-    }
-    nav ul li a {
-      font-size: 12px;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-    .subtitle {
-      font-size: 1rem;
-    }
-    h2 {
-      font-size: 1.3rem;
-    }
-    p {
-      font-size: 0.9rem;
-    }
-    .tag {
-      font-size: 0.8rem;
-    }
-    .page-header {
-      margin-top: 4rem;
-    }
+  .subtitle {
+    font-size: 0.8rem;
   }
-  
-  @media (max-width: 576px) {
-    .container {
-      padding: 0.5rem;
-    }
-    .main-header, .card {
-      padding: 0.5rem 1rem;
-    }
-    .logo {
-      font-size: 14px;
-    }
-    nav ul li {
-      margin-left: 8px;
-    }
-    nav ul li a {
-      font-size: 10px;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-    .subtitle {
-      font-size: 0.9rem;
-    }
-    h2 {
-      font-size: 1.1rem;
-    }
-    p {
-      font-size: 0.8rem;
-    }
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.1rem 0.3rem;
-    }
-    .page-header {
-      margin-top: 3rem;
-    }
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
   }
-  
-  @media (max-width: 400px) {
-    .main-header, .card {
-      padding: 0.4rem 0.8rem;
-    }
-    .logo {
-      font-size: 12px;
-    }
-    nav ul li {
-      margin-left: 6px;
-    }
-    nav ul li a {
-      font-size: 8px;
-    }
-    h1 {
-      font-size: 1.5rem;
-    }
-    .subtitle {
-      font-size: 0.8rem;
-    }
-    h2 {
-      font-size: 1rem;
-    }
-    p {
-      font-size: 0.7rem;
-    }
-    .tag {
-      font-size: 0.6rem;
-      padding: 0.1rem 0.2rem;
-    }
-    .page-header {
-      margin-top: 2.5rem;
-    }
+  p {
+    font-size: 0.7rem;
   }
-  
+  p + p {
+    margin-top: 0.8rem;
+  }
+  .tag {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.2rem;
+  }
+  .page-header {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .subtitle {
+    font-size: 0.7rem;
+  }
+  h1 {
+    font-size: 1rem;
+  }
+}
