@@ -1,11 +1,11 @@
 package handler
 
 import (
+	"framework/resources"
 	"framework/utils/locate"
 	"framework/utils/logger"
 	"log"
 	"net/http"
-	"os"
 	"time"
 )
 
@@ -16,11 +16,11 @@ var (
 
 func init() {
 	var err error
-	templateRu, err = os.ReadFile("templates/homepage_ru.html")
+	templateRu, err = resources.GetTemplateFile("template/homepage_ru.html")
 	if err != nil {
 		log.Fatalf("Failed to load Russian template: %v", err)
 	}
-	templateEn, err = os.ReadFile("templates/homepage_en.html")
+	templateEn, err = resources.GetTemplateFile("template/homepage_en.html")
 	if err != nil {
 		log.Fatalf("Failed to load English template: %v", err)
 	}

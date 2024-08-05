@@ -1,7 +1,8 @@
-FROM golang:1.22.5-alpine
+FROM golang:1.22.5-alpine AS builder
 WORKDIR /app
-COPY go.mod ./
-RUN go mod download
 COPY . .
-RUN go build -o app .
-CMD [ "./app" ]
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags="-s -w" -o app .
+
+FROM scratch
+COPY --from=builder /app/app /app
+CMD ["/app"]
