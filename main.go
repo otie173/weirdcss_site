@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"framework/api/route"
-	"framework/resources"
+	"framework/resource"
 	"framework/utils/logger"
 )
 
@@ -14,7 +14,7 @@ func main() {
 	logger.Register()
 	route.Register()
 
-	staticFS, err := fs.Sub(resources.StaticFiles, "static")
+	staticFS, err := fs.Sub(resource.StaticFiles, "static")
 	if err != nil {
 		log.Fatal(err)
 	}

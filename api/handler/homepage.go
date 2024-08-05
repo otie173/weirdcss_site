@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"framework/resources"
+	"framework/resource"
 	"framework/utils/locate"
 	"framework/utils/logger"
 	"log"
@@ -16,11 +16,11 @@ var (
 
 func init() {
 	var err error
-	templateRu, err = resources.GetTemplateFile("template/homepage_ru.html")
+	templateRu, err = resource.GetTemplateFile("template/homepage_ru.html")
 	if err != nil {
 		log.Fatalf("Failed to load Russian template: %v", err)
 	}
-	templateEn, err = resources.GetTemplateFile("template/homepage_en.html")
+	templateEn, err = resource.GetTemplateFile("template/homepage_en.html")
 	if err != nil {
 		log.Fatalf("Failed to load English template: %v", err)
 	}
