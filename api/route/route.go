@@ -6,5 +6,5 @@ import (
 )
 
 func Register() {
-	http.HandleFunc("/", handler.HomepageHandler)
+	http.HandleFunc("/weirdcss", handler.FrameworkHandler)
 }

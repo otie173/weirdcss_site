@@ -16,28 +16,22 @@ var (
 
 func init() {
 	var err error
-	templateRu, err = resource.GetTemplateFile("template/homepage_ru.html")
+	templateRu, err = resource.GetTemplateFile("template/weirdcss_ru.html")
 	if err != nil {
 		log.Fatalf("Failed to load Russian template: %v", err)
 	}
-	templateEn, err = resource.GetTemplateFile("template/homepage_en.html")
+	templateEn, err = resource.GetTemplateFile("template/weirdcss_en.html")
 	if err != nil {
 		log.Fatalf("Failed to load English template: %v", err)
 	}
 }
 
-func HomepageHandler(res http.ResponseWriter, req *http.Request) {
+func FrameworkHandler(res http.ResponseWriter, req *http.Request) {
 	startTime := time.Now()
 
 	if req.Method != http.MethodGet {
 		http.Error(res, "Method not allowed", http.StatusMethodNotAllowed)
-		logger.LogRequest(req.Method, req.URL.Path, http.StatusMethodNotAllowed, time.Duration(time.Since(startTime).Microseconds()), req.RemoteAddr)
-		return
-	}
-
-	if req.URL.Path != "/" {
-		http.NotFound(res, req)
-		logger.LogRequest(req.Method, req.URL.Path, http.StatusNotFound, time.Duration(time.Since(startTime).Microseconds()), req.RemoteAddr)
+		logger.LogRequest(req.Method, req.URL.Path, http.StatusMethodNotAllowed, time.Duration(time.Since(startTime).Microseconds()))
 		return
 	}
 
@@ -57,5 +51,5 @@ func HomepageHandler(res http.ResponseWriter, req *http.Request) {
 		status = http.StatusInternalServerError
 	}
 
-	logger.LogRequest(req.Method, req.URL.Path, status, time.Duration(time.Since(startTime).Microseconds()), req.RemoteAddr)
+	logger.LogRequest(req.Method, req.URL.Path, status, time.Duration(time.Since(startTime).Microseconds()))
 }
