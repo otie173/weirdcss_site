@@ -6,6 +6,45 @@
     <title>weirdCSS Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="/static/css/weirdcss.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <style>
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1.2em;
+        background-color: #a0a0a0;
+        margin-left: 2px;
+        animation: blink 0.7s infinite;
+        vertical-align: text-bottom;
+        position: relative;
+        top: -0.1em;
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+
+      .animate-on-scroll.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -23,9 +62,12 @@
         </nav>
       </header>
       <header class="page-header">
-        <h1>A dead simple <span class="gradient-text">CSS Framework</span>
+        <h1>A Super Simple <span class="gradient-text">CSS Framework</span>
         </h1>
-        <p class="subtitle">Created by a lazy developer who doesn't want to learn complex frameworks</p>
+        <p class="subtitle" x-data="typewriter()" x-init="startTyping()">
+          <span x-text="displayText"></span>
+          <span class="cursor"></span>
+        </p>
       </header>
       <div class="buttons-container">
         <a href="#" class="btn btn-primary">Get Started</a>
@@ -33,31 +75,63 @@
       </div>
       <main>
         <div class="feature-cards">
-          <div class="feature-card">
+          <div class="feature-card animate-on-scroll">
             <div class="feature-icon">🎨</div>
             <h3 class="feature-title">Simple Design</h3>
-            <p class="feature-description">Minimalist and modern design that's easy to customize to your needs.</p>
+            <p class="feature-description">A minimalist and modern design that's easy to customize to your needs.</p>
           </div>
-          <div class="feature-card">
+          <div class="feature-card animate-on-scroll">
             <div class="feature-icon">🚀</div>
             <h3 class="feature-title">Quick Start</h3>
-            <p class="feature-description">Launch your project with weirdCSS in minutes, no complex setup required. Thanks to its minimalist set of styles, your site will load at lightning speed.</p>
+            <p class="feature-description">Launch your project with weirdCSS in minutes, without complex setups. Thanks to its minimalist set of styles, your site will load lightning-fast.</p>
           </div>
-          <div class="feature-card">
+          <div class="feature-card animate-on-scroll">
             <div class="feature-icon">📱</div>
             <h3 class="feature-title">Responsive</h3>
-            <p class="feature-description">Your site will look great on any device, from smartphones to desktops.</p>
+            <p class="feature-description">Your website will look great on any device, from smartphones to desktops.</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card animate-on-scroll">
           <h2>Why was this created?</h2>
-          <p>I wanted to create a simple landing page for myself, but at the time, I didn't want to dive into complex CSS frameworks. So, I decided to create my own. By applying some basic styles to headings and other elements, you can instantly give your site an attractive look without much effort.</p>
-          <p>The main idea behind this project is to make life easier for people who want to create something simple yet appealing, but don't have the time or desire to delve into the intricacies of web development.</p>
+          <p>I wanted to create a simple landing page for myself without diving into complex CSS frameworks, so I present to you my own. By applying some basic styles to headings and other elements, you can instantly and effortlessly give your site an attractive look.</p>
+          <p>The main idea behind this project is to make life easier for people who want to create something simple and appealing but don't have enough time or desire to delve into the intricacies of web development.</p>
           <p>
-            <b>Keep in mind that this project is still a work in progress. I'll be adding new features and refining them to make it production-ready in the near future. Stay tuned!</b>
+            <b>Please note that this project is still in development. I'll be adding new features and refining existing ones to make it production-ready in the near future. Stay tuned!</b>
           </p>
         </div>
       </main>
     </div>
-  </body>
-</html>
+    <script>
+      function typewriter() {
+        return {
+          fullText: 'Created by a lazy developer who doesn\'t want to learn complex frameworks',
+          displayText: '',
+          startTyping() {
+            this.typeText();
+          },
+          typeText() {
+            if (this.displayText.length < this.fullText.length) {
+              this.displayText += this.fullText.charAt(this.displayText.length);
+              setTimeout(() => this.typeText(), 50);
+            }
+          }
+        }
+      }
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                entry.target.classList.add('show');
+              }, index * 100);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        animateOnScrollElements.forEach(element => {
+          observer.observe(element);
+        });
+      });
+    </script>

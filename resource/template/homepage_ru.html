@@ -1,63 +1,122 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weirdCSS Фреймворк</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="/static/css/weirdcss.css" rel="stylesheet">
-  </head>
-  <body>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <style>
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: #a0a0a0;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            vertical-align: text-bottom;
+            position: relative;
+            top: -0.1em;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <header class="main-header">
-        <div class="logo">weirdCSS</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="#">Обучение</a>
-            </li>
-            <li>
-              <a href="#">GitHub</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <header class="page-header">
-        <h1>Очень простой <span class="gradient-text">CSS-фреймворк</span>
-        </h1>
-        <p class="subtitle">Создан ленивым разработчиком, который не хочет изучать сложные фреймворки</p>
-      </header>
-      <div class="buttons-container">
-        <a href="#" class="btn btn-primary">Начать</a>
-        <a href="#" class="btn btn-outline">Установить</a>
-      </div>
-      <main>
-        <div class="feature-cards">
-          <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3 class="feature-title">Простой дизайн</h3>
-            <p class="feature-description">Минималистичный и современный дизайн, который легко настроить под свои нужды.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <h3 class="feature-title">Быстрый старт</h3>
-            <p class="feature-description">Запустите свой проект с weirdCSS за считанные минуты, без сложных настроек. Благодаря минималистичному набору стилей, ваш сайт будет загружаться молниеносно.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <h3 class="feature-title">Адаптивность</h3>
-            <p class="feature-description">Ваш сайт будет отлично выглядеть на любых устройствах, от смартфонов до десктопов.</p>
-          </div>
+        <header class="main-header">
+            <div class="logo">weirdCSS</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Обучение</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
+        <header class="page-header">
+            <h1>Очень простой <span class="gradient-text">CSS-фреймворк</span></h1>
+            <p class="subtitle" x-data="typewriter()" x-init="startTyping()">
+                <span x-text="displayText"></span><span class="cursor"></span>
+            </p>
+        </header>
+        <div class="buttons-container">
+            <a href="#" class="btn btn-primary">Начать</a>
+            <a href="#" class="btn btn-outline">Установить</a>
         </div>
-        <div class="card">
-          <h2>Зачем это было создано?</h2>
-          <p>Я хотел создать простую целевую страницу для себя, но в то время не хотел погружаться в сложные CSS-фреймворки. Поэтому я решил создать свой собственный. Применяя некоторые базовые стили к заголовкам и другим элементам, вы можете мгновенно придать своему сайту привлекательный вид, не потрудившись при этом.</p>
-          <p>Основная идея этого проекта - облегчить жизнь людям, которые хотят создать что-то простое, но привлекательное, но у которых нет времени или желания разбираться в тонкостях веб-разработки.</p>
-          <p>
-            <b>Имейте в виду, что этот проект все еще находится в стадии разработки. Я буду добавлять новые функции и дорабатывать их, чтобы в ближайшем будущем он был готов к работе. Будьте в курсе!</b>
-          </p>
-        </div>
-      </main>
+        <main>
+            <div class="feature-cards">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Простой дизайн</h3>
+                    <p class="feature-description">Минималистичный и современный дизайн, который легко настроить под свои нужды.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Быстрый старт</h3>
+                    <p class="feature-description">Запустите свой проект с weirdCSS за считанные минуты, без сложных настроек. Благодаря минималистичному набору стилей, ваш сайт будет загружаться молниеносно.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Адаптивность</h3>
+                    <p class="feature-description">Ваш сайт будет отлично выглядеть на любых устройствах, от смартфонов до десктопов.</p>
+                </div>
+            </div>
+            <div class="card animate-on-scroll">
+                <h2>Зачем это было создано?</h2>
+                <p>Я хотел создать простую целевую страницу для себя без погружения в сложные CSS-фреймворки, поэтому  представляю вам свой собственный. Применяя некоторые базовые стили к заголовкам и другим элементам, вы можете мгновенно и без труда придать своему сайту привлекательный вид.</p>
+                <p>Основная идея этого проекта - облегчить жизнь людям, которые хотят создать что-то простое и привлекательное, но не имеют достаточно времени или желания разбираться в тонкостях веб-разработки.</p>
+                <p><b>Имейте в виду, что этот проект все еще находится в стадии разработки. Я буду добавлять новые функции и дорабатывать их, чтобы в ближайшем будущем он был готов к работе. Будьте в курсе!</b></p>
+            </div>
+        </main>
     </div>
-  </body>
+
+    <script>
+        function typewriter() {
+            return {
+                fullText: 'Создан ленивым разработчиком, который не хочет изучать сложные фреймворки',
+                displayText: '',
+                startTyping() {
+                    this.typeText();
+                },
+                typeText() {
+                    if (this.displayText.length < this.fullText.length) {
+                        this.displayText += this.fullText.charAt(this.displayText.length);
+                        setTimeout(() => this.typeText(), 50);
+                    }
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('show');
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animateOnScrollElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
 </html>
